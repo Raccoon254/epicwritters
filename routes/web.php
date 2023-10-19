@@ -30,5 +30,6 @@ Route::middleware(['auth', 'check-payment'])->group(function () {
 });
 
 Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
+Route::get('/make-payment/{amount}', [PaymentController::class, 'makePayment'])->name('make.payment');
 
 require __DIR__.'/auth.php';
