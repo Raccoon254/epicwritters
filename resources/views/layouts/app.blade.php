@@ -17,6 +17,7 @@
 <body class="font-sans antialiased bg-cover bg-center" style="background-image: url('/bg.svg');">
 <div class="min-h-screen bg-gray-100">
     @include('layouts.navigation')
+    @include('session.alerts')
 
     <!-- Page Heading -->
     @if (isset($header))
