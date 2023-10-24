@@ -45,6 +45,12 @@ class PaymentController extends Controller
         $user = auth()->user();
         $transaction_code = $request->transaction_code;
 
+        //check if transaction is not already submitted
+        $payment = $user->payments()->where('transaction_code', $transaction_code)->first();
+        if ($payment) {
+            return redirect()->back()->with('error', 'Transaction already submitted.');
+        }
+
         //create payment
         $payment = $user->payments()->create([
             'transaction_code' => $transaction_code,
