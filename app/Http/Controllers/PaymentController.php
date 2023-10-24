@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mpesa;
 use App\Models\User;
+use App\Notifications\NewPaymentReceived;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,7 +45,10 @@ class PaymentController extends Controller
         ]);
 
         //notify admins of new payment
-
+        $admin = User::where('email', 'tomsteve187@gmail.com')->first();
+        if ($admin) {
+            $admin->notify(new NewPaymentReceived($payment));
+        }
     }
 
     private function validateAmount($amount): bool|RedirectResponse
