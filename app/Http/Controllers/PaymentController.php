@@ -22,6 +22,13 @@ class PaymentController extends Controller
         return view('payment.create', compact('paidAmount'));
     }
 
+    public function userPayments(): View
+    {
+        $user = auth()->user();
+        $payments = $user->payments()->orderBy('created_at', 'desc')->get();
+        return view('payment.user-payments', compact('payments'));
+    }
+
     public function makePayment($amount): bool|RedirectResponse
     {
         if ($this->validateAmount($amount)!== true) {
@@ -50,6 +57,8 @@ class PaymentController extends Controller
         if ($admin) {
             $admin->notify(new NewPaymentReceived($payment));
         }
+
+        return redirect()->route('payments.user')->with('success', 'Payment submitted successfully.')->with('payment', $payment);
     }
 
     public function show($paymentId): View

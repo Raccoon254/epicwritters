@@ -35,4 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/payments/{payment}/verify', [PaymentController::class, 'verify'])->name('payments.verify');
 });
 
+Route::get('/payments/user', [PaymentController::class, 'userPayments'])->name('payments.user');
+
 require __DIR__.'/auth.php';
