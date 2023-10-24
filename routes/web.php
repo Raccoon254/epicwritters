@@ -15,13 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified','check-payment'])->name('dashboard');
+Route::get('/', function () {return view('welcome');})->name('home');
+Route::get('/payment/instructions', function () {return view('payment.instructions');})->name('payment.instructions');
+Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified','check-payment'])->name('dashboard');
 
 Route::middleware(['auth', 'check-payment'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,5 +27,6 @@ Route::middleware(['auth', 'check-payment'])->group(function () {
 
 Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
 Route::get('/make-payment/{amount}', [PaymentController::class, 'makePayment'])->name('make.payment');
+Route::post('/payments/submit', [PaymentController::class, 'submit'])->name('payments.submit');
 
 require __DIR__.'/auth.php';

@@ -13,7 +13,10 @@ class PaymentController extends Controller
     //
     public function create(): View
     {
-        return view('payment.create');
+        $user = auth()->user();
+        $payment = $user->payments()->where('status', 'approved')->orderBy('created_at', 'desc')->first();
+        $paidAmount = $payment ? $payment->amount : 0; //Determine the amount user paid
+        return view('payment.create', compact('paidAmount'));
     }
 
     public function makePayment($amount): bool|RedirectResponse
@@ -24,7 +27,15 @@ class PaymentController extends Controller
 
         $phone_number = auth()->user()->phone_number;
 
-        dd($phone_number, $amount);
+        //dd($phone_number, $amount);
+        return redirect()->route('payment.instructions', compact('phone_number', 'amount'));
+    }
+
+    public function submit(Request $request){
+        $user = auth()->user();
+        $transaction_code = $request->transaction_code;
+
+        dd($transaction_code);
     }
 
     private function validateAmount($amount): bool|RedirectResponse

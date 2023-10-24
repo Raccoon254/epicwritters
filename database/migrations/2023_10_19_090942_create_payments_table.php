@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
+
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('transaction_code');
             $table->decimal('amount', 8, 2);  // Assuming 2 decimal places, adjust as needed
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
