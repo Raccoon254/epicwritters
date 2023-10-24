@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mpesa;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,7 +36,15 @@ class PaymentController extends Controller
         $user = auth()->user();
         $transaction_code = $request->transaction_code;
 
-        dd($transaction_code);
+        //create payment
+        $payment = $user->payments()->create([
+            'transaction_code' => $transaction_code,
+            'amount' => $request->amount,
+            'status' => 'pending',
+        ]);
+
+        //notify admins of new payment
+
     }
 
     private function validateAmount($amount): bool|RedirectResponse
