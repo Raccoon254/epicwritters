@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mpesa;
+use App\Models\Payment;
 use App\Models\User;
 use App\Notifications\NewPaymentReceived;
 use Carbon\Carbon;
@@ -50,6 +51,21 @@ class PaymentController extends Controller
             $admin->notify(new NewPaymentReceived($payment));
         }
     }
+
+    public function verifyPayment($paymentId): RedirectResponse
+    {
+        $payment = Payment::findOrFail($paymentId);
+        $payment->update(['status' => 'verified']);
+
+        // Mark the notification as read
+        $notification = $admin->notifications->where('data.payment_id', $paymentId)->first();
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
+        return redirect()->back()->with('success', 'Payment verified successfully.');
+    }
+
 
     private function validateAmount($amount): bool|RedirectResponse
     {
