@@ -45,10 +45,21 @@ class PaymentController extends Controller
         $user = auth()->user();
         $transaction_code = $request->transaction_code;
 
-        //check if transaction is not already submitted
+        if (!ctype_alnum($transaction_code)) {
+            return redirect()->back()->with('error', 'Invalid transaction code.');
+        }
+
+        if (strlen($transaction_code) < 6) {
+            return redirect()->back()->with('error', 'Transaction code must be at least 6 characters.');
+        }
+
+        if (strlen($transaction_code) > 15) {
+            return redirect()->back()->with('error', 'Transaction code must not be greater than 15 characters.');
+        }
+
         $payment = $user->payments()->where('transaction_code', $transaction_code)->first();
         if ($payment) {
-            return redirect()->back()->with('error', 'Transaction already submitted.');
+            return redirect()->back()->with('error', 'Transaction code already submitted.');
         }
 
         //create payment
