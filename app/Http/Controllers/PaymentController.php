@@ -24,6 +24,7 @@ class PaymentController extends Controller
 
     public function userPayments(): View
     {
+
         $user = auth()->user();
         $payments = $user->payments()->orderBy('created_at', 'desc')->get();
         return view('payment.user-payments', compact('payments'));
@@ -37,7 +38,6 @@ class PaymentController extends Controller
 
         $phone_number = auth()->user()->phone_number;
 
-        //dd($phone_number, $amount);
         return redirect()->route('payment.instructions', compact('phone_number', 'amount'));
     }
 
@@ -58,7 +58,7 @@ class PaymentController extends Controller
             $admin->notify(new NewPaymentReceived($payment));
         }
 
-        return redirect()->route('payments.user')->with('success', 'Payment submitted successfully.')->with('payment', $payment);
+        return redirect()->route('payments.user')->with('success', 'Payment submitted successfully.');
     }
 
     public function show($paymentId): View
