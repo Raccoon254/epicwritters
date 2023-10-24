@@ -1,10 +1,14 @@
 <x-app-layout>
     <!-- check if $payments exists -->
     @if($payments->count())
-        <div class="container flex items-center justify-center">
+        <div class="container flex flex-col my-2 gap-4 items-center justify-center">
+            <center class="my-4">
+                @php($name = auth()->user()->name)
+                <h1 class="text-3xl font-bold uppercase text-gray-700">{{ $name }}'s Payments</h1>
+            </center>
             <div class="row w-full md:w-9/12">
                 <div class="overflow-x-auto">
-                    <table class="table table-auto table-md text-gray-800">
+                    <table class="table table-auto table-md text-gray-700">
                         <!-- head -->
                         <thead class="my-3">
                             <tr class="text-[20px] font-medium my-5 text-gray-800">
@@ -12,7 +16,7 @@
                                 <th>Amount</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Show</th>
                             </tr>
                         </thead>
                         <tbody>
