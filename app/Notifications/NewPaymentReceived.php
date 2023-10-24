@@ -38,7 +38,7 @@ class NewPaymentReceived extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->markdown('emails.payment.received', ['payment' => $this->payment]);
+            ->markdown('emails.payment', ['payment' => $this->payment]);
     }
 
     public function toDatabase($notifiable): array

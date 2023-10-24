@@ -41,7 +41,7 @@ class PaymentController extends Controller
         //create payment
         $payment = $user->payments()->create([
             'transaction_code' => $transaction_code,
-            'amount' => $request->amount,
+            'amount' => 0,
             'status' => 'pending',
         ]);
 
@@ -50,6 +50,26 @@ class PaymentController extends Controller
         if ($admin) {
             $admin->notify(new NewPaymentReceived($payment));
         }
+    }
+
+    public function show($paymentId): View
+    {
+        $payment = Payment::findOrFail($paymentId);
+        return view('payment.show', compact('payment'));
+    }
+
+    public function index(): View
+    {
+        $payments = Payment::all();
+        return view('payments.index', ['payments' => $payments]);
+    }
+
+    public function verify(Payment $payment): RedirectResponse
+    {
+        // You'd typically have logic here to verify the payment.
+        $payment->update(['status' => 'verified']);
+
+        return redirect()->route('payments.index')->with('success', 'Payment has been verified.');
     }
 
     public function verifyPayment($paymentId): RedirectResponse
