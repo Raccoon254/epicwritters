@@ -7,6 +7,7 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Notifications\NewPaymentReceived;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -84,6 +85,9 @@ class PaymentController extends Controller
         return view('payment.show', compact('payment'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function index(): View
     {
         $this->authorize('manage', Payment::class);
