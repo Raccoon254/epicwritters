@@ -87,7 +87,7 @@ class PaymentController extends Controller
     public function index(): View
     {
         $payments = Payment::all();
-        return view('payments.index', ['payments' => $payments]);
+        return view('payment.index', ['payments' => $payments]);
     }
 
     public function verify(Request $request, Payment $payment): RedirectResponse
