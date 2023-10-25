@@ -86,6 +86,7 @@ class PaymentController extends Controller
 
     public function index(): View
     {
+        $this->authorize('manage', Payment::class);
         $payments = Payment::all();
         return view('payment.index', ['payments' => $payments]);
     }
