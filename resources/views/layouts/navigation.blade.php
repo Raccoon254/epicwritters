@@ -3,15 +3,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
         <div class="flex justify-between h-14">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-7 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
+                <!-- Drawer Button -->
+                <section data-tip="SideBar" class="tooltip tooltip-bottom m-0 p-0 shrink-0 flex items-center md:hidden">
+                    <label for="my-drawer" class="drawer-button swap swap-rotate">
+
+                        <!-- this hidden checkbox controls the state -->
+                        <input class="hidden" type="checkbox" />
+
+                        <!-- hamburger icon -->
+                        <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+
+
+                        <!-- close icon -->
+                        <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+
+                    </label>
+                </section>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-2 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-2 sm:-my-px sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>

@@ -15,17 +15,25 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://kit.fontawesome.com/af6aba113a.js" crossorigin="anonymous"></script>
 </head>
-<body class="font-sans antialiased bg-cover bg-center" style="background-image: url('/bg.svg');">
+<body data-theme="light" class="font-sans antialiased bg-cover bg-center" style="background-image: url('/bg.svg');">
 <div class="min-h-screen bg-gray-100">
     @include('layouts.navigation')
 
     <!-- Session Alerts -->
     @include('session.alerts')
 
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
+    <section class="flex">
+
+        @section('sidebar')
+            @include('layouts.sidebar')
+        @show
+
+        <!-- Page Content -->
+        <main class="p-2 sm:p-4 w-full mt-14 overflow-clip">
+            {{ $slot }}
+        </main>
+
+    </section>
 </div>
 </body>
 </html>
