@@ -25,7 +25,7 @@
                                     <td>{{ $payment->transaction_code }}</td>
                                     <td>
                                         @if($payment->amount == 0)
-                                            <i class='fa-solid fa-circle-notch fa-spin'></i>
+                                            <progress class="progress progress-info w-full"></progress>
                                         @else
                                             KSH {{ $payment->amount }}
                                         @endif

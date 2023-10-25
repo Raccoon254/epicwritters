@@ -90,12 +90,15 @@ class PaymentController extends Controller
         return view('payments.index', ['payments' => $payments]);
     }
 
-    public function verify(Payment $payment): RedirectResponse
+    public function verify(Request $request, Payment $payment): RedirectResponse
     {
         // You'd typically have logic here to verify the payment.
-        $payment->update(['status' => 'verified']);
+        $amount = $request->amount;
+        $payment->update(['status' => 'approved']);
+        $payment->update(['amount' => $amount]);
 
-        return redirect()->route('payments.index')->with('success', 'Payment has been verified.');
+
+        return redirect()->back()->with('success', 'Payment verified successfully.');
     }
 
     public function verifyPayment($paymentId): RedirectResponse

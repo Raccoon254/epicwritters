@@ -11,7 +11,7 @@ class CheckPayment
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request): (Response) $next
      */
     public function handle(Request $request, Closure $next)
     {
@@ -19,15 +19,14 @@ class CheckPayment
         $requiredAmount = env('REQUIRED_PAYMENT_AMOUNT', 500);
 
         if ($user) {
-            $payment = $user->payments()->where('status', 'approved')->orderBy('created_at', 'desc')->first();
+            // Sum up all the approved payments
+            $totalPaidAmount = $user->payments()->where('status', 'approved')->sum('amount');
 
-            //If payment exists and the amount is greater than or equal to the required amount
-            if ($payment && $payment->amount >= $requiredAmount) {
+            // Check if the total amount paid by the user is greater than or equal to the required amount
+            if ($totalPaidAmount >= $requiredAmount) {
                 return $next($request);
             } else {
-                $paidAmount = $payment ? $payment->amount : 0; //Determine the amount user paid
-
-                $message = "You have paid $paidAmount. The amount needed is $requiredAmount.";
+                $message = "You have paid $totalPaidAmount. The amount needed is $requiredAmount.";
                 return redirect()->route('payment.create')->with('error', $message);
             }
         }
