@@ -45,10 +45,17 @@
             </div>
         </div>
     @else
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>No Payments</h1>
+        <div class="container h-full">
+            <div class="row h-full">
+                <div class="h-80 flex items-center justify-center col-md-12">
+                    <div class="card gap-4 w-full sm:w-8/12 md:w-6/12 shadow p-4">
+                        Dear {{ auth()->user()->name }}, you have no payments yet.
+                        <br>
+                        You can make a payment by clicking the button below.
+                        <a class="w-full flex justify-center" href="{{ route('payment.instructions') }}">
+                            <x-primary-button class="mt-4">Make Payment</x-primary-button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
