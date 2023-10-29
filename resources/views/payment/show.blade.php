@@ -7,11 +7,11 @@
             <h2 class="text-2xl text-center font-semibold border-b p-2 text-gray-800 mb-4">User Details</h2>
             <div class="flex flex-col gap-4">
                 <div class="flex justify-between items-center border-b p-2">
-                    <i class="fas fa-user text-blue-600 text-2xl mr-3"></i>
+                    <i class="fa-solid fa-circle-user text-blue-600 text-2xl mr-3"></i>
                     <div class="w-1/2"><p>{{ $payment->user->name }}</p></div>
                 </div>
 
-                <div class="flex justify-between items-center border-b p-2">
+                <div class="flex overflow-clip justify-between items-center border-b p-2">
                     <i class="fas fa-envelope text-red-600 text-2xl mr-3"></i>
                     <div class="w-1/2"><p>{{ $payment->user->email }}</p></div>
                 </div>
@@ -31,25 +31,25 @@
 
             <div class="flex flex-col gap-4">
                 <div class="flex justify-between items-center border-b p-2">
-                    <i class="fas fa-file-invoice-dollar text-yellow-600 text-2xl mr-3"></i>
-                    <div class="w-1/2"><p>{{ $payment->id }}</p></div>
+                    <i class="fa-solid fa-fingerprint text-yellow-600 text-2xl mr-3"></i>
+                    <div class="w-1/2"><p>T{{ $payment->id }}EPIC</p></div>
                 </div>
 
                 <div class="flex justify-between items-center border-b p-2">
-                    <i class="fas fa-dollar-sign text-purple-600 text-2xl mr-3"></i>
+                    <i class="fas fa-coins text-purple-600 text-2xl mr-3"></i>
                     <div class="w-1/2">
                         <p>
                             @if($payment->amount == 0)
                                 <progress class="progress progress-info w-6/12 md:w-8/12 lg:w-10/12"></progress>
                             @else
-                                Amount: KSH {{ $payment->amount }}
+                               KSH {{ $payment->amount }}
                             @endif
                         </p>
                     </div>
                 </div>
 
                 <div class="flex justify-between items-center border-b p-2">
-                    <i class="fas fa-tasks text-teal-600 text-2xl mr-3"></i>
+                    <i class="fa-solid fa-shield-halved text-pink-600 text-2xl mr-3"></i>
                     <div class="w-1/2">
                         <p>
                            {{ $payment->status }}
