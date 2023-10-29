@@ -18,6 +18,11 @@ class CheckPayment
         $user = $request->user();
         $requiredAmount = env('REQUIRED_PAYMENT_AMOUNT', 500);
 
+        //if the user is an admin, let them pass
+        if ($user && $user->isAdmin()) {
+            return $next($request);
+        }
+
         if ($user) {
             // Sum up all the approved payments
             $totalPaidAmount = $user->payments()->where('status', 'approved')->sum('amount');
