@@ -29,6 +29,13 @@
                 </div>
             </a>
 
+            <a href="{{ route('payments.user') }}" class="side {{ Route::is('payments.user') ? 'active' : '' }}">
+                <i class="fa-solid fa-sheet-plastic"></i>
+                <div class="">
+                    Payments
+                </div>
+            </a>
+
             <a class="side" href="" >
                 <i class="fa-regular fa-calendar"></i>
                 <div class="">
