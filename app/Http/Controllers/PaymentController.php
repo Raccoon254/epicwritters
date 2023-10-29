@@ -50,6 +50,10 @@ class PaymentController extends Controller
             return redirect()->back()->with('error', 'Invalid transaction code.');
         }
 
+        if (preg_match('/[a-z]/', $transaction_code)) {
+            return redirect()->back()->with('error', 'Transaction code must be in uppercase.');
+        }
+
         if (strlen($transaction_code) < 6) {
             return redirect()->back()->with('error', 'Transaction code must be at least 6 characters.');
         }
