@@ -23,13 +23,6 @@
             </a>
 
             <a class="side" href="" >
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div class="">
-                    Courses
-                </div>
-            </a>
-
-            <a class="side" href="" >
                 <i class="fa-regular fa-circle-play"></i>
                 <div class="">
                     Lessons
@@ -44,9 +37,16 @@
             </a>
 
             <a class="side" href="" >
-                <i class="fa-solid fa-circle-nodes"></i>
+                <i class="fa-solid fa-earth-africa"></i>
                 <div class="">
                     Connect
+                </div>
+            </a>
+
+            <a class="side" href="{{ route('coming.soon') }}" >
+                <i class="fa-solid fa-circle-nodes"></i>
+                <div class="">
+                    Earn
                 </div>
             </a>
 

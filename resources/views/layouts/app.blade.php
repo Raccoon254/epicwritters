@@ -25,7 +25,7 @@
     <section class="flex">
 
         <!-- Sidebar -->
-        @if (Auth::check() && Auth::user()->check_payment)
+        @if (auth()->check() && auth()->user()->isCompliant())
             @section('sidebar')
                 @include('layouts.sidebar')
             @show

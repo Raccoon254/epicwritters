@@ -38,5 +38,5 @@ Route::middleware(['can:manage','auth'])->group(function () {
 });
 
 Route::get('/transactions/user', [PaymentController::class, 'userPayments'])->name('payments.user');
-
+Route::get('/coming/soon', function () {return view('coming-soon');})->name('coming.soon');
 require __DIR__.'/auth.php';

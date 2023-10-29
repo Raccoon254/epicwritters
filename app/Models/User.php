@@ -40,4 +40,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->email === 'tomsteve187@gmail.com';
     }
 
+    public function isCompliant(): bool
+    {
+        return $this->payments()->where('status', 'approved')->sum('amount') >= env('REQUIRED_PAYMENT_AMOUNT', 500);
+    }
+
 }
