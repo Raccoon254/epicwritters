@@ -33,9 +33,9 @@
                     <div class="flex gap-4">
 
                         <a href="{{ route('login') }}">
-                            <x-secondary-button class="ring-gray-50">
+                            <x-primary-button class="bg-white border-blue-500 text-blue-700 hover:text-white ring-gray-50 ">
                                 Login
-                            </x-secondary-button>
+                            </x-primary-button>
                         </a>
 
                         @if (Route::has('register'))
