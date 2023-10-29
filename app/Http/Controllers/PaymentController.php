@@ -62,7 +62,7 @@ class PaymentController extends Controller
             return redirect()->back()->with('error', 'Transaction code must not be greater than 15 characters.');
         }
 
-        $payment = $user->payments()->where('transaction_code', $transaction_code)->first();
+        $payment = Payment::where('transaction_code', $transaction_code)->first();
         if ($payment) {
             return redirect()->back()->with('error', 'Transaction code already submitted.');
         }

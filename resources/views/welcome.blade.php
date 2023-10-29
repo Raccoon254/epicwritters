@@ -33,7 +33,7 @@
                     <div class="flex gap-4">
 
                         <a href="{{ route('login') }}">
-                            <x-primary-button class="bg-white border-blue-500 text-blue-700 hover:text-white ring-gray-50 ">
+                            <x-primary-button class="ring-green-600 ">
                                 Login
                             </x-primary-button>
                         </a>
