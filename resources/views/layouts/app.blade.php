@@ -29,6 +29,10 @@
             @section('sidebar')
                 @include('layouts.sidebar')
             @show
+        @elseif(auth()->check() && auth()->user()->isAdmin())
+            @section('sidebar')
+                @include('layouts.sidebar')
+            @show
         @endif
 
         <!-- Page Content -->
