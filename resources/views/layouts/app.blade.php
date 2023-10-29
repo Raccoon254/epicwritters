@@ -24,9 +24,12 @@
 
     <section class="flex">
 
-        @section('sidebar')
-            @include('layouts.sidebar')
-        @show
+        <!--Show sidebar if user check-payment middleware passes -->
+        @if (Auth::check() && Auth::user()->check_payment)
+            @section('sidebar')
+                @include('layouts.sidebar')
+            @show
+        @endif
 
         <!-- Page Content -->
         <main class="p-2 sm:p-4 w-full mt-14 overflow-clip">
