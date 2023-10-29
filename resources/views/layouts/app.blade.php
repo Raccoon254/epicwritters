@@ -24,7 +24,7 @@
 
     <section class="flex">
 
-        <!--Show sidebar if user check-payment middleware passes -->
+        <!-- Sidebar -->
         @if (Auth::check() && Auth::user()->check_payment)
             @section('sidebar')
                 @include('layouts.sidebar')
