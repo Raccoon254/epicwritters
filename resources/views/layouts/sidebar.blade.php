@@ -37,16 +37,16 @@
             </a>
 
             <a class="side" href="" >
-                <i class="fa-solid fa-earth-africa"></i>
+                <i class="fa-solid fa-circle-nodes"></i>
                 <div class="">
                     Connect
                 </div>
             </a>
 
             <a class="side" href="{{ route('coming.soon') }}" >
-                <i class="fa-solid fa-circle-nodes"></i>
+                <i class="fa-solid fa-coins"></i>
                 <div class="">
-                    Earn
+                    Income
                 </div>
             </a>
 
