@@ -27,13 +27,13 @@ Route::middleware(['auth', 'check-payment'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
+    Route::get('/payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
     Route::get('/make-payment/{amount}', [PaymentController::class, 'makePayment'])->name('make.payment');
     Route::post('/payments/submit', [PaymentController::class, 'submit'])->name('payments.submit');
 });
 
 Route::middleware(['can:manage','auth'])->group(function () {
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
-    Route::get('/payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
     Route::post('/payments/{payment}/verify', [PaymentController::class, 'verify'])->name('payments.verify');
 });
 
