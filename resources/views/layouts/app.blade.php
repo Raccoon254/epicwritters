@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!--Description-->
+    <meta name="description" content="A platform for learning and teaching.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
