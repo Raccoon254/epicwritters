@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <!-- check if $payments exists -->
     @if($payments->count())
         <div class="container flex flex-col my-2 gap-4 items-center justify-center">
