@@ -42,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isCompliant(): bool
     {
-        return $this->payments()->where('status', 'approved')->sum('amount') >= env('REQUIRED_PAYMENT_AMOUNT', 500);
+        return $this->isAdmin() || $this->payments()->where('status', 'approved')->sum('amount') >= env('REQUIRED_PAYMENT_AMOUNT', 500);
     }
 
 }
