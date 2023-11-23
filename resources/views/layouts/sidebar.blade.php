@@ -59,7 +59,7 @@
 
             @can('manage')
                 <a class="side" href="" >
-                <i class="fa-regular fa-circle-user"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
                 <div class="">
                     Admin
                 </div>
