@@ -85,12 +85,16 @@
     @apply duration-200 flex gap-2 items-center hover:bg-blue-700 hover:text-gray-50 p-2 rounded w-full bg-base-200;
 }
 
+.locked{
+    @apply duration-200 flex gap-2 items-center hover:text-gray-50 p-2 rounded w-full text-gray-400;
+}
+
 .active{
     @apply bg-gradient-to-r from-green-700 to-blue-500 text-gray-50 hover:bg-blue-700 hover:text-gray-50;
 }
 
 .btn{
-    @apply ring-1 ring-offset-1 ring-white normal-case p-1;
+    @apply ring-1 ring-offset-1 normal-case ;
     text-decoration: none;
 }
 

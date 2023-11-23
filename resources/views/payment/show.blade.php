@@ -45,6 +45,17 @@
                                KSH {{ $payment->amount }}
                             @endif
                         </p>
+                        @if($payment->amount == 0)
+                            <span class="text-[10px] items-center flex text-red-500">
+                                This payment is being processed. Please wait.
+                                                         <span class="loading loading-dots loading-md"></span>
+                            </span>
+                        @else
+                            <span class="text-xs text-green-500">
+                                Your payment has been processed.
+                            </span>
+                        @endif
+
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@
     <div class="">
 
     </div>
-    <div class="z-40 drawer-side locked">
+    <div class="z-40 drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
 
         <div class="menu overflow-clip p-4 pt-[70px] w-64 h-full bg-base-100 border-r border-gray-200 text-base-content gap-4 flex flex-col justify-start items-start">

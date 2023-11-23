@@ -20,6 +20,11 @@ public function dashboard(): View
             'icon' => 'fas fa-tachometer-alt',
             'route' => route('admin.dashboard'),
         ],
+        [
+            'content' => 'Users',
+            'icon' => 'fas fa-users',
+            'route' => route('users.index'),
+        ],
     ];
 
     return view('admin.dashboard', ['cards' => $cards]);
