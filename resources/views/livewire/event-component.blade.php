@@ -45,6 +45,17 @@
             </div>
         </div>
 
+        <!--if empty-->
+        @if($events->isEmpty())
+            <div class="flex items-center justify-center">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">No events found.</h3>
+                    <p class="text-gray-600">Create an event to get started.</p>
+                    <button wire:click="$emit('openModal', 'event-component', 'create')" class="btn btn-primary mt-4">Create Event</button>
+                </div>
+            </div>
+        @endif
+
     <table class="table table-striped mt-5">
         <thead>
             <tr>
