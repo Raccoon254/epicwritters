@@ -36,7 +36,7 @@
                 </div>
             </a>
 
-            <a class="side" href="" >
+            <a class="side" href="{{route('events')}}" >
                 <i class="fa-regular fa-calendar"></i>
                 <div class="">
                     Events

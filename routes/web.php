@@ -32,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
     Route::get('/make-payment/{amount}', [PaymentController::class, 'makePayment'])->name('make.payment');
     Route::post('/payments/submit', [PaymentController::class, 'submit'])->name('payments.submit');
+    //events
+    Route::get('/events', function () {return view('events');})->name('events');
 });
 
 Route::middleware(['can:manage','auth'])->group(function () {
