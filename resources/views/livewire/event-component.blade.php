@@ -37,6 +37,14 @@
     </dialog>
 @endif
 
+        <div wire:loading class="fixed top-0 left-0 w-full h-full bg-gray-300 backdrop-blur-sm bg-opacity-80 z-50 flex justify-center items-center">
+            <div class="text-white flex items-center h-full justify-center text-lg font-semibold">
+                <div class="loader">
+                    <span class="loading bg-orange-800 loading-ring loading-lg"></span>
+                </div>
+            </div>
+        </div>
+
     <table class="table table-striped mt-5">
         <thead>
             <tr>
