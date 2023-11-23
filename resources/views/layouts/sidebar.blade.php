@@ -58,7 +58,7 @@
             </a>
 
             @can('manage')
-                <a class="side" href="" >
+                <a class="side" href="{{ route('admin.dashboard') }}" >
                     <i class="fa-solid fa-shield-halved"></i>
                 <div class="">
                     Admin
