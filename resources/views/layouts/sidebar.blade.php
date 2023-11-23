@@ -57,6 +57,15 @@
                 </div>
             </a>
 
+            @can('manage')
+                <a class="side" href="" >
+                <i class="fa-regular fa-circle-user"></i>
+                <div class="">
+                    Admin
+                </div>
+                </a>
+            @endcan
+
             <a class="side" href="" >
                 <i class="fa-regular fa-circle-user"></i>
                 <div class="">
