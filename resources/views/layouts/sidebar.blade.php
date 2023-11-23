@@ -50,7 +50,7 @@
                 </div>
             </a>
 
-            <a class="side" href="{{ route('coming.soon') }}" >
+            <a href="{{ route('coming.soon') }}" class="side {{ Route::is('coming.soon') ? 'active' : '' }}">
                 <i class="fa-solid fa-coins"></i>
                 <div class="">
                     Income
@@ -58,7 +58,7 @@
             </a>
 
             @can('manage')
-                <a class="side" href="{{ route('admin.dashboard') }}" >
+                <a href="{{ route('admin.dashboard') }}" class="side {{ Route::is('admin.dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-shield-halved"></i>
                 <div class="">
                     Admin
