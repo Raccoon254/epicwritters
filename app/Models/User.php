@@ -45,4 +45,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->isAdmin() || $this->payments()->where('status', 'approved')->sum('amount') >= env('REQUIRED_PAYMENT_AMOUNT', 500);
     }
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class)->withPivot('attended');
+    }
 }
