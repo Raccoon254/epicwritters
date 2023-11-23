@@ -56,7 +56,7 @@
                 <td>{{ $event->description }}</td>
                 <td>{{ $event->start_time }}</td>
                 <td>{{ $event->end_time }}</td>
-                <td>
+                <td class="flex gap-2">
                     <button wire:click="edit({{ $event->id }})" class="btn btn-primary btn-sm">Edit</button>
                     <button wire:click="delete({{ $event->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

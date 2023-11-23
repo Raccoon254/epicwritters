@@ -29,7 +29,7 @@ class AdminController extends Controller
             [
                 'content'=>'Events',
                 'icon'=>'fa-regular fa-calendar',
-                'route'=>'admin.events',
+                'route'=>route('admin.events'),
             ]
         ];
 
