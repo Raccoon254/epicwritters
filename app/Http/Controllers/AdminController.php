@@ -26,6 +26,11 @@ class AdminController extends Controller
                 'icon' => 'fas fa-users',
                 'route' => route('users.index'),
             ],
+            [
+                'content'=>'Events',
+                'icon'=>'fa-regular fa-calendar',
+                'route'=>'admin.events',
+            ]
         ];
 
         return view('admin.dashboard', ['cards' => $cards]);
@@ -35,5 +40,10 @@ class AdminController extends Controller
     {
         $users = User::all();
         return view('admin.users', ['users' => $users]);
+    }
+
+    public function events(): View
+    {
+        return view('admin.events');
     }
 }

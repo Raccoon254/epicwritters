@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Event;
 
@@ -9,30 +10,49 @@ class EventComponent extends Component
 {
     public $events, $name, $description, $start_time, $end_time, $event_id;
     public $isOpen = 0;
+    public $showModal = false;
+    public $action = '';
 
-    public function render()
-    {
-        $this->events = Event::all();
-        return view('livewire.events');
-    }
 
-    public function create()
+    public function create(): void
     {
         $this->resetInputFields();
-        $this->openModal();
+        $this->action = 'create';
+        $this->showModal = true;
     }
 
-    public function openModal()
+    public function edit($id): void
+    {
+        $event = Event::findOrFail($id);
+        $this->event_id = $id;
+        $this->name = $event->name;
+        $this->description = $event->description;
+        $this->start_time = $event->start_time;
+        $this->end_time = $event->end_time;
+
+        $this->action = 'edit';
+        $this->showModal = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->showModal = false;
+    }
+
+
+    public function render(): View
+    {
+        $this->events = Event::all();
+        return view('livewire.event-component');
+    }
+
+    public function openModal(): void
     {
         $this->isOpen = true;
     }
 
-    public function closeModal()
+    private function resetInputFields(): void
     {
-        $this->isOpen = false;
-    }
-
-    private function resetInputFields(){
         $this->name = '';
         $this->description = '';
         $this->start_time = '';
@@ -40,7 +60,7 @@ class EventComponent extends Component
         $this->event_id = '';
     }
 
-    public function store()
+    public function store(): void
     {
         $this->validate([
             'name' => 'required',
@@ -62,17 +82,26 @@ class EventComponent extends Component
         $this->resetInputFields();
     }
 
-    public function edit($id)
-    {
-        $event = Event::findOrFail($id);
-        $this->event_id = $id;
-        $this->name = $event->name;
-        $this->description = $event->description;
-        $this->start_time = $event->start_time;
-        $this->end_time = $event->end_time;
+   public function update(): void
+{
+    $this->validate([
+        'name' => 'required',
+        'start_time' => 'required',
+        'end_time' => 'required',
+    ]);
 
-        $this->openModal();
-    }
+    Event::updateOrCreate(['id' => $this->event_id], [
+        'name' => $this->name,
+        'description' => $this->description,
+        'start_time' => $this->start_time,
+        'end_time' => $this->end_time
+    ]);
+
+    session()->flash('message', 'Event Updated Successfully.');
+
+    $this->closeModal();
+    $this->resetInputFields();
+}
 
     public function delete($id)
     {
