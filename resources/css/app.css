@@ -88,3 +88,8 @@
 .active{
     @apply bg-gradient-to-r from-green-700 to-blue-500 text-gray-50 hover:bg-blue-700 hover:text-gray-50;
 }
+
+.btn{
+    @apply ring-1 ring-offset-1 ring-white normal-case p-1;
+    text-decoration: none;
+}
