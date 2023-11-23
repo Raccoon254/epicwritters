@@ -33,6 +33,10 @@
             @section('sidebar')
                 @include('layouts.sidebar')
             @show
+        @else
+            @section('sidebar')
+                @include('layouts.locked-sidebar')
+            @show
         @endif
 
         <!-- Page Content -->

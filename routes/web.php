@@ -41,4 +41,6 @@ Route::middleware(['can:manage','auth'])->group(function () {
 
 Route::get('/transactions/user', [PaymentController::class, 'userPayments'])->name('payments.user');
 Route::get('/coming/soon', function () {return view('coming-soon');})->name('coming.soon');
+Route::get('/about', function () {return view('about');})->name('about');
+Route::get('/locked', function () {return view('locked');})->name('locked');
 require __DIR__.'/auth.php';
